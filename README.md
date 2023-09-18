@@ -2,7 +2,7 @@
 
 TecnoWave es una plataforma web desarrollada en Django que permite a los usuarios registrados crear y compartir publicaciones sobre tecnología. La plataforma ofrece diversas funciones para mejorar la experiencia de usuario, como paginación, gestión de usuarios, likes, comentarios y perfiles de usuario.
 
-Puedes ver un video de demostración en [este enlace](https://github.com/fellgar246/ch_py_pf_garcia).
+Puedes ver un video de demostración en [este enlace]([https://www.loom.com/share/8c57401046304c359a57c7d9d6a2d35e?sid=364d5838-0fac-4e20-9977-a62439497861])).
 
 ## Funciones Principales
 
