@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Login {% endblock title %}
+
+{% block Content %}
+    <link href=" {% static 'BlogTecnoWave/css/registration/login.css' %}" rel="stylesheet" />  
+    <div class="login-container">
+        <h1>Iniciar Sesión</h1>
+        <div class="login-subcontainer">
+            <div class="form-group">
+                <form method="POST" class="form-login">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Nombre de usuario...">
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña...">
+                    </div>
+                    <br/>
+                    <button class="btn btn-secondary">Ingresar</button>
+            </div>
+            <small>Aún no estás registrado? <a href="{% url 'register' %}">Registrate Aquí</a></small>
+        </div>
+    </div>
+
+{% endblock Content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Edit Profile Page {% endblock title %}
+
+{% block Content %}
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 50px 0 50px 0;">
+        {% if user.is_authenticated %}
+            {% if user.id == profile.user.id %}
+                <h1>Edit Profile Page</h1>
+                <br/><br/>
+                <div class="form-group">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-secondary">Actualizar Perfil</button>
+                </div>
+            {% else %} 
+                <p>No tienes permisos para crear un post</p>
+                <br/>
+                <p>Regresar a la <a href="{% url 'Home' %}">página principal</a></p>
+            {% endif %}
+        {% else %}
+            <p>No tienes permisos para crear un post</p>
+            <br/>
+            <p><a href="{% url 'register' %}">Registrate</a> o <a href="{% url 'login' %}">inicia sesión</a></p>
+        {% endif %}
+    </div>
+
+{% endblock Content %} 

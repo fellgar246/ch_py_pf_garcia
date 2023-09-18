@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Nueva Categoría {% endblock title %}
+
+{% block Content %}
+    <link href=" {% static 'BlogTecnoWave/css/add_category.css' %}" rel="stylesheet" /> 
+    <div class="addcategory-container"> 
+    {% if user.is_authenticated %} 
+        {% if user.is_superuser %}
+            <h1>Añade una nueva Categoría</h1>
+            <br/><br/>
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-secondary">Crear Categoría</button>
+            </div>
+        {% else %}
+            <p>No tienes permisos para agregar una categoría</p>
+            <br/>
+            <p>Regresar a la <a href="{% url 'Home' %}">página principal</a></p>
+        {% endif %} 
+    {% else %}
+        <p>No tienes permisos para agregar una categoría</p>
+        <p><a href="{% url 'register' %}">Registrate</a> o <a href="{% url 'login' %}">inicia sesión</a></p>
+    {% endif %}
+    </div>
+{% endblock Content %}

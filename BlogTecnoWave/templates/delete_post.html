@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Borrar Blog Post {% endblock title %}
+
+{% block Content %}
+    <div style="display: flex; flex-direction:column; align-items:center; justify-content:center; margin: 50px 0 50px 0;"> 
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}  
+            <h1>Borrar Blog Post</h1>
+            <br/><br/>
+            <h3>Borrar: {{ post.title }}</h3>
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    <br/>
+                    <div style="display: flex;flex-direction:column; align-items:center; justify-content:center;">
+                        <strong>¿Estás seguro de borrar este Post?</strong><br/>
+                        <button class="btn btn-danger">Borrar Post</button>
+                    </div>
+            </div>
+        {% else %}
+            <p>Sólo el creador del post puede eliminar</p>
+        {% endif %}
+    {% else %}
+        <p>No tienes permisos para borrar</p>
+        <p><a href="{% url 'register' %}">Registrate</a> o <a href="{% url 'login' %}">inicia sesión</a></p>
+    {% endif %}
+    </div>
+
+{% endblock Content %}

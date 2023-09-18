@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Crea un Nuevo Posteo {% endblock title %}
+
+{% block Content %}
+    <link href=" {% static 'BlogTecnoWave/css/add_post.css' %}" rel="stylesheet" />  
+    <div class="addpost-container"> 
+        {% if user.is_authenticated %} 
+            <h1> Crea un nuevo posteo </h1>
+            <br/><br/>
+            <div class="form-group">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <button class="btn btn-secondary">Crear Post</button>
+            </div>
+            <script>
+                var name = "{{ user.id }}";
+                document.getElementById("user_id").value = name;
+            </script>
+
+        {% else %}
+            <p>No tienes permisos para crear un post</p>
+        {% endif %}
+    </div>
+{% endblock Content %}

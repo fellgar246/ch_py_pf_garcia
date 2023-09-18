@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Registro {% endblock title %}
+
+{% block Content %}
+    <link href=" {% static 'BlogTecnoWave/css/registration/register.css' %}" rel="stylesheet" />  
+    <div class="register-container">
+        <h1>Registrarse</h1>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-secondary">Registrarse</button>
+        </div>
+    </div>
+
+{% endblock Content %}

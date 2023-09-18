@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Editar Perfil {% endblock title %}
+
+{% block Content %} 
+    <link href=" {% static 'BlogTecnoWave/css/registration/edit_profile.css' %}" rel="stylesheet" /> 
+    <div class="editprofile-container">
+        <h1>Editar Perfil</h1>
+        <br/><br/>
+            
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p>Cambia tu password <a href="{% url 'Password' %}">aquí</a></p>
+                <button class="btn btn-secondary">Actualizar Datos</button>
+        </div>
+    </div>
+
+
+{% endblock Content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Crear comentario en el Blog {% endblock title %}
+
+{% block Content %}
+    <div style="display: flex; flex-direction:column; align-items:center; justify-content:center; margin: 50px 0 50px 0;">  
+    {% if user.is_authenticated %} 
+        <h1>Add comment</h1>
+        <br/><br/>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-secondary">Añadir Comentario</button>
+        </div>
+        <script>
+            var name = "{{ user.id }}";
+            document.getElementById("user_id").value = name;
+        </script>
+
+    {% else %}
+        <p>No tienes permisos para agregar un comentario</p>
+        <p><a href="{% url 'register' %}">Registrate</a> o <a href="{% url 'login' %}">inicia sesión</a></p>
+    {% endif %}
+    </div>
+
+{% endblock Content %}
